@@ -1,6 +1,7 @@
 import os
 import cv2
 import numpy as np
+import re  # Import the re module for regular expressions
 from cvzone.HandTrackingModule import HandDetector
 
 cap = cv2.VideoCapture(0)
@@ -18,7 +19,7 @@ def get_gesture_name():
             print("Gesture name cannot be empty.")
             continue
         
-        sanitized_name = re.sub(r'[<>:"/\\|?*]', '', gesture_name)
+        sanitized_name = re.sub(r'[<>:"/\\|?*]', '', gesture_name)  # Remove invalid characters
         if not sanitized_name:
             print("Gesture name contains only invalid characters.")
             continue
